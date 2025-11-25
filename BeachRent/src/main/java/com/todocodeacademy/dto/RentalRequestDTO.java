@@ -1,11 +1,26 @@
 package com.todocodeacademy.dto;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
+
+
 import java.time.LocalDateTime;
 
 public class RentalRequestDTO {
 
+    @NotNull(message = "Product ID is required")
+    @Positive(message = "Product ID must be positive")
     private Long productId;
+
+    @NotBlank(message = "Customer name is required")
+    @Size(min = 3, max = 100, message = "Customer name must be between 3 and 100 characters")
     private String customerName;
+
+    @NotNull(message = "Start time is required")
     private LocalDateTime startTime;
+
+    @NotNull(message = "End time is required")
     private LocalDateTime endTime;
 
     // getters/setters

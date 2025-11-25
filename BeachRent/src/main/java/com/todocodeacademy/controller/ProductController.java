@@ -3,6 +3,7 @@ package com.todocodeacademy.controller;
 import com.todocodeacademy.dto.ProductRequestDTO;
 import com.todocodeacademy.dto.ProductResponseDTO;
 import com.todocodeacademy.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,32 +18,28 @@ public class ProductController {
         this.service = service;
     }
 
-    // Endpoint para crear un producto
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ProductResponseDTO create(@RequestBody ProductRequestDTO req) {
+    public ProductResponseDTO create(@Valid @RequestBody ProductRequestDTO req) {
         return service.create(req);
     }
 
-    // Endpoint para actualizar un producto por id
     @PutMapping("/{id}")
-    public ProductResponseDTO update(@PathVariable Long id, @RequestBody ProductRequestDTO req) {
+    public ProductResponseDTO update(@PathVariable Long id,
+                                     @Valid @RequestBody ProductRequestDTO req) {
         return service.update(id, req);
     }
 
-    // Endpoint para obtener un producto por id
     @GetMapping("/{id}")
     public ProductResponseDTO get(@PathVariable Long id) {
         return service.get(id);
     }
 
-    // Endpoint para listar todos los productos
     @GetMapping
     public List<ProductResponseDTO> list() {
         return service.list();
     }
 
-    // Endpoint para eliminar un producto por id
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {

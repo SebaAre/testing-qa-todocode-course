@@ -1,13 +1,26 @@
 package com.todocodeacademy.dto;
 
+
+import jakarta.validation.constraints.*;
+
 import java.math.BigDecimal;
 
 public class ProductRequestDTO {
 
+        @NotBlank(message = "Product name is required")
+        @Size(min = 3, max = 100, message = "Product name must be between 3 and 100 characters")
         private String name;
+
+        @NotBlank(message = "Category is required")
         private String category;
+
+        @Min(value = 0, message = "Stock cannot be negative")
         private int stock;
+
+        @NotNull(message = "Price per hour is required")
+        @DecimalMin(value = "0.01", message = "Price per hour must be greater than 0")
         private BigDecimal pricePerHour;
+
         private boolean active = true;
 
         // getters/setters
