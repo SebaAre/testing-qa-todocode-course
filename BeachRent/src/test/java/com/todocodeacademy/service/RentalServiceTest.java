@@ -36,16 +36,16 @@ public class RentalServiceTest {
         rental = new Rental();
         rental.setId(1L);
         rental.setProductId(5L);
-        rental.setCustomerName("John Doe");
-        rental.setStartTime(LocalDateTime.of(2024, 12, 25, 10, 0));
-        rental.setEndTime(LocalDateTime.of(2024, 12, 25, 14, 0));
+        rental.setCustomerName("Sebastian Arellano");
+        rental.setStartTime(LocalDateTime.of(2025, 11, 25, 10, 0));
+        rental.setEndTime(LocalDateTime.of(2025, 11, 25, 14, 0));
         rental.setStatus(Rental.Status.CREATED);
 
         rentalRequest = new RentalRequestDTO();
         rentalRequest.setProductId(5L);
-        rentalRequest.setCustomerName("John Doe");
-        rentalRequest.setStartTime(LocalDateTime.of(2024, 12, 25, 10, 0));
-        rentalRequest.setEndTime(LocalDateTime.of(2024, 12, 25, 14, 0));
+        rentalRequest.setCustomerName("Sebastian Arellano");
+        rentalRequest.setStartTime(LocalDateTime.of(2025, 11, 25, 10, 0));
+        rentalRequest.setEndTime(LocalDateTime.of(2025, 11, 25, 14, 0));
     }
 
     @Test
@@ -60,10 +60,10 @@ public class RentalServiceTest {
         assertThat(result).isNotNull();
         assertThat(result.getId()).isEqualTo(1L);
         assertThat(result.getProductId()).isEqualTo(5L);
-        assertThat(result.getCustomerName()).isEqualTo("John Doe");
+        assertThat(result.getCustomerName()).isEqualTo("Sebastian Arellano");
         assertThat(result.getStatus()).isEqualTo("CREATED");
-        assertThat(result.getStartTime()).isEqualTo(LocalDateTime.of(2024, 12, 25, 10, 0));
-        assertThat(result.getEndTime()).isEqualTo(LocalDateTime.of(2024, 12, 25, 14, 0));
+        assertThat(result.getStartTime()).isEqualTo(LocalDateTime.of(2025, 11, 25, 10, 0));
+        assertThat(result.getEndTime()).isEqualTo(LocalDateTime.of(2025, 11, 25, 14, 0));
 
         verify(rentalRepository, times(1)).save(any(Rental.class));
     }
@@ -79,7 +79,7 @@ public class RentalServiceTest {
         // Then
         assertThat(result).isNotNull();
         assertThat(result.getId()).isEqualTo(1L);
-        assertThat(result.getCustomerName()).isEqualTo("John Doe");
+        assertThat(result.getCustomerName()).isEqualTo("Sebastian Arellano");
         assertThat(result.getStatus()).isEqualTo("CREATED");
 
         verify(rentalRepository, times(1)).findById(1L);
@@ -107,7 +107,7 @@ public class RentalServiceTest {
         Rental returnedRental = new Rental();
         returnedRental.setId(1L);
         returnedRental.setProductId(5L);
-        returnedRental.setCustomerName("John Doe");
+        returnedRental.setCustomerName("Sebastian Arellano");
         returnedRental.setStartTime(rental.getStartTime());
         returnedRental.setEndTime(rental.getEndTime());
         returnedRental.setStatus(Rental.Status.RETURNED);
@@ -149,7 +149,7 @@ public class RentalServiceTest {
         Rental cancelledRental = new Rental();
         cancelledRental.setId(1L);
         cancelledRental.setProductId(5L);
-        cancelledRental.setCustomerName("John Doe");
+        cancelledRental.setCustomerName("Sebastian Arellano");
         cancelledRental.setStartTime(rental.getStartTime());
         cancelledRental.setEndTime(rental.getEndTime());
         cancelledRental.setStatus(Rental.Status.CANCELLED);

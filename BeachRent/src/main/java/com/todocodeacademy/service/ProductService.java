@@ -17,7 +17,7 @@ public class ProductService {
         this.repo = repo;
     }
 
-    // Crear un nuevo producto
+    // CREATE
     public ProductResponseDTO create(ProductRequestDTO req) {
         Product product = new Product();
         product.setName(req.getName());
@@ -29,7 +29,7 @@ public class ProductService {
         return toResp(product);
     }
 
-    // Actualizar un producto existente por id
+    // UPDATE BY ID
     public ProductResponseDTO update(Long id, ProductRequestDTO req) {
         Product product = repo.findById(id).orElse(null);
         if (product == null) return null;
@@ -41,22 +41,22 @@ public class ProductService {
         return toResp(repo.save(product));
     }
 
-    // Eliminar un producto por id
+    // DELETE BY ID
     public void delete(Long id) {
         repo.deleteById(id);
     }
 
-    // Obtener un producto por id
+    // GET BY ID
     public ProductResponseDTO get(Long id) {
         return repo.findById(id).map(this::toResp).orElse(null);
     }
 
-    // Listar todos los productos
+    // GET ALL PRODUCTS
     public List<ProductResponseDTO> list() {
         return repo.findAll().stream().map(this::toResp).collect(Collectors.toList());
     }
 
-    // Método auxiliar para mapear Product → ProductResponseDTO
+    // MAPPING Product → ProductResponseDTO
     private ProductResponseDTO toResp(Product product) {
         ProductResponseDTO prodResp = new ProductResponseDTO();
         prodResp.setId(product.getId());

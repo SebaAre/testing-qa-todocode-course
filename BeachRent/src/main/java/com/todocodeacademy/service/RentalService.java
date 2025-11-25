@@ -14,7 +14,7 @@ public class RentalService {
         this.rentalRepo = rentalRepo;
     }
 
-    // Crear un nuevo alquiler
+    // CREATE
     public RentalResponseDTO create(RentalRequestDTO req) {
         Rental rental = new Rental();
         rental.setProductId(req.getProductId());
@@ -25,12 +25,12 @@ public class RentalService {
         return toResp(rental);
     }
 
-    // Obtener un alquiler por id
+    // GET BY ID
     public RentalResponseDTO get(Long id) {
         return rentalRepo.findById(id).map(this::toResp).orElse(null);
     }
 
-    // Marcar un alquiler como devuelto
+    // SET AS RETURNED
     public RentalResponseDTO returnRental(Long id) {
         return rentalRepo.findById(id).map(rental -> {
             rental.setStatus(Rental.Status.RETURNED);
@@ -38,7 +38,7 @@ public class RentalService {
         }).orElse(null);
     }
 
-    // Cancelar un alquiler
+    // CANCEL A RENT
     public RentalResponseDTO cancel(Long id) {
         return rentalRepo.findById(id).map(rental -> {
             rental.setStatus(Rental.Status.CANCELLED);
@@ -46,7 +46,7 @@ public class RentalService {
         }).orElse(null);
     }
 
-    // Método auxiliar para mapear Rental → RentalResponseDTO
+    // MAPPING Rental → RentalResponseDTO
     private RentalResponseDTO toResp(Rental rental) {
         RentalResponseDTO rentalResp = new RentalResponseDTO();
         rentalResp.setId(rental.getId());

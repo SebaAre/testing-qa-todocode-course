@@ -1,6 +1,6 @@
 # BeachRent API
 
-Final integrative project from the TodoCode Academy Testing & Software Quality course by Luisina de Paula.
+Final project from the TodoCode Academy Testing & Software Quality course by Luisina de Paula.
 
 **Academy Website:** https://todocodeacademy.com/
 
@@ -56,9 +56,6 @@ Java 17, Spring Boot 3.5.8, Spring Data JPA, H2 Database, JUnit 5, Mockito, Mock
 
 ## Features
 
-- **Unit Testing:** 14 tests for Service layer with Mockito
-- **Integration Testing:** 15 tests for Controller layer with MockMVC
-- **Total Coverage:** 29 tests, 80%+ coverage
-- **Input Validation:** Bean Validation with custom error messages
-- **Given-When-Then:** BDD-style test structure
+- **Unit Testing:** Tests for Service layer with Mockito
+- **Integration Testing:** Tests for Controller layer with MockMVC
 - **In-Memory Database:** H2 for fast testing and development

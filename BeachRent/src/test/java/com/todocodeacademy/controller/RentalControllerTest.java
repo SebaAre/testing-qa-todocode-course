@@ -40,17 +40,17 @@ public class RentalControllerTest {
         // Setup request DTO
         rentalRequest = new RentalRequestDTO();
         rentalRequest.setProductId(5L);
-        rentalRequest.setCustomerName("John Doe");
-        rentalRequest.setStartTime(LocalDateTime.of(2024, 12, 25, 10, 0));
-        rentalRequest.setEndTime(LocalDateTime.of(2024, 12, 25, 14, 0));
+        rentalRequest.setCustomerName("Sebastian Arellano");
+        rentalRequest.setStartTime(LocalDateTime.of(2025, 11, 25, 10, 0));
+        rentalRequest.setEndTime(LocalDateTime.of(2025, 11, 25, 14, 0));
 
         // Setup response DTO
         rentalResponse = new RentalResponseDTO();
         rentalResponse.setId(1L);
         rentalResponse.setProductId(5L);
-        rentalResponse.setCustomerName("John Doe");
-        rentalResponse.setStartTime(LocalDateTime.of(2024, 12, 25, 10, 0));
-        rentalResponse.setEndTime(LocalDateTime.of(2024, 12, 25, 14, 0));
+        rentalResponse.setCustomerName("Sebastian Arellano");
+        rentalResponse.setStartTime(LocalDateTime.of(2025, 11, 25, 10, 0));
+        rentalResponse.setEndTime(LocalDateTime.of(2025, 11, 25, 14, 0));
         rentalResponse.setStatus("CREATED");
     }
 
@@ -66,10 +66,10 @@ public class RentalControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(1)))
                 .andExpect(jsonPath("$.productId", is(5)))
-                .andExpect(jsonPath("$.customerName", is("John Doe")))
+                .andExpect(jsonPath("$.customerName", is("Sebastian Arellano")))
                 .andExpect(jsonPath("$.status", is("CREATED")))
-                .andExpect(jsonPath("$.startTime", is("2024-12-25T10:00:00")))
-                .andExpect(jsonPath("$.endTime", is("2024-12-25T14:00:00")));
+                .andExpect(jsonPath("$.startTime", is("2025-11-25T10:00:00")))
+                .andExpect(jsonPath("$.endTime", is("2025-11-25T14:00:00")));
 
         verify(rentalService, times(1)).create(any(RentalRequestDTO.class));
     }
@@ -85,7 +85,7 @@ public class RentalControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(1)))
                 .andExpect(jsonPath("$.productId", is(5)))
-                .andExpect(jsonPath("$.customerName", is("John Doe")))
+                .andExpect(jsonPath("$.customerName", is("Sebastian Arellano")))
                 .andExpect(jsonPath("$.status", is("CREATED")));
 
         verify(rentalService, times(1)).get(1L);
@@ -111,9 +111,9 @@ public class RentalControllerTest {
         RentalResponseDTO returnedRental = new RentalResponseDTO();
         returnedRental.setId(1L);
         returnedRental.setProductId(5L);
-        returnedRental.setCustomerName("John Doe");
-        returnedRental.setStartTime(LocalDateTime.of(2024, 12, 25, 10, 0));
-        returnedRental.setEndTime(LocalDateTime.of(2024, 12, 25, 14, 0));
+        returnedRental.setCustomerName("Sebastian Arellano");
+        returnedRental.setStartTime(LocalDateTime.of(2025, 11, 25, 10, 0));
+        returnedRental.setEndTime(LocalDateTime.of(2025, 11, 25, 14, 0));
         returnedRental.setStatus("RETURNED");
 
         when(rentalService.returnRental(1L)).thenReturn(returnedRental);
@@ -124,7 +124,7 @@ public class RentalControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(1)))
                 .andExpect(jsonPath("$.status", is("RETURNED")))
-                .andExpect(jsonPath("$.customerName", is("John Doe")));
+                .andExpect(jsonPath("$.customerName", is("Sebastian Arellano")));
 
         verify(rentalService, times(1)).returnRental(1L);
     }
@@ -149,9 +149,9 @@ public class RentalControllerTest {
         RentalResponseDTO cancelledRental = new RentalResponseDTO();
         cancelledRental.setId(1L);
         cancelledRental.setProductId(5L);
-        cancelledRental.setCustomerName("John Doe");
-        cancelledRental.setStartTime(LocalDateTime.of(2024, 12, 25, 10, 0));
-        cancelledRental.setEndTime(LocalDateTime.of(2024, 12, 25, 14, 0));
+        cancelledRental.setCustomerName("Sebastian Arellano");
+        cancelledRental.setStartTime(LocalDateTime.of(2025, 11, 25, 10, 0));
+        cancelledRental.setEndTime(LocalDateTime.of(2025, 11, 25, 14, 0));
         cancelledRental.setStatus("CANCELLED");
 
         when(rentalService.cancel(1L)).thenReturn(cancelledRental);
@@ -162,7 +162,7 @@ public class RentalControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(1)))
                 .andExpect(jsonPath("$.status", is("CANCELLED")))
-                .andExpect(jsonPath("$.customerName", is("John Doe")));
+                .andExpect(jsonPath("$.customerName", is("Sebastian Arellano")));
 
         verify(rentalService, times(1)).cancel(1L);
     }
